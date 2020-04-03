@@ -1,5 +1,6 @@
 const express = require('express')
 const path = require('path')
+const fs = require('fs')
 const http = require('http')
 const consola = require('consola')
 const bodyParser = require('body-parser')
@@ -14,11 +15,15 @@ function start () {
     
     const PATH_TO_CLIENT  = path.join(__dirname, '..', '..', './dist')
     const PATH_TO_HTML  = path.join(PATH_TO_CLIENT, 'index.html')
-    
+
+    fs.stat(PATH_TO_HTML, (err) => {
+      if (err) throw consola.error({message: 'index.html is not defined', badge: true,})
+    })
+
     const app = express()
     const server = http.createServer(app)
     socketIO.listen(server)
-    
+
     const static = express.static(PATH_TO_CLIENT)
     app.use(connectHistory())
     app.use(static)
@@ -28,7 +33,7 @@ function start () {
     app.get('/', (req, res) => {
       res.sendFile(PATH_TO_HTML)
     })
-    
+
     app.listen(PORT, HOST, () => {
       consola.ready({
         message: `Server is listening to http://${HOST}:${PORT}`,
@@ -36,10 +41,12 @@ function start () {
       })
     })
   } catch(err) {
-    consola.error({
-      message: `Server isn't listening. ERROR: ${err}`,
-      badge: true,
-    })
+    if (err) {
+      consola.error({
+        message: `Server isn't listening. ERROR: ${err}`,
+        badge: true,
+      })
+    }
   }
 }
 
