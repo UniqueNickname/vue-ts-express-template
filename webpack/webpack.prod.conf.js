@@ -4,6 +4,9 @@ const baseWebpackConfig = require('./webpack.base.conf')
 const buildWebpackConfig = merge(baseWebpackConfig, {
   //++ BUILD config 
   mode: 'production',
+  output: {
+    filename: `${baseWebpackConfig.externals.paths.assets}js/[name].js`,
+  },
   module: {
     rules: [
       {

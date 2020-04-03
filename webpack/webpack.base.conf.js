@@ -27,7 +27,6 @@ module.exports = {
     app: [`${PATHS.src}/index.ts`, `${PATHS.src}/ts/index.ts`],
   },
   output: {
-    filename: `${PATHS.assets}js/[name].[hash].js`,
     path: PATHS.dist,
     publicPath: '/'
   },

@@ -14,6 +14,9 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       errors: true
     }
   },
+  output: {
+    filename: `${baseWebpackConfig.externals.paths.assets}js/[name].[hash].js`,
+  },
   module: {
     rules: [
       {

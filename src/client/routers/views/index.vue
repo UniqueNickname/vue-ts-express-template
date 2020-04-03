@@ -10,8 +10,9 @@ import Vue from 'vue'
 import hello from '../../components/hello.vue'
 
 export default Vue.extend({
+  name: 'Home',
   components: {
     hello
-  }
+  },
 })
 </script>
