@@ -1,0 +1,16 @@
+extends ../layouts/main
+
+block variables
+  - var title = 'The Vue template';
+  - var description = 'Description for the template';
+  - var pageClass = 'index-page';
+
+block content
+  section
+    .container
+      +item('item name', 'item descr')
+      +item('item name', 'item descr')
+      +item('item name', 'item descr')
+
+block script
+  //- script(type='text/javascript').
