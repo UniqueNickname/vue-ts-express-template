@@ -42,9 +42,19 @@ function start () {
     })
 
     io.on('connection', (socket) => {
-      consola.info({ message: 'Connection is ready' })
+      consola.info({ message: '[Connect]'})
+
+      socket.on('newMessage', data => {
+        consola.info({
+          message: data.text,
+          badge: true
+        })
+      })
+
+      socket.emit('User', { name: 'Ivan' })
+
       socket.on('disconnect', (socket) => {
-        consola.info({ message: 'Connection is finished' })
+        consola.info({ message: '[Disconnect]' })
       })
     })
 

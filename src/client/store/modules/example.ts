@@ -1,16 +1,20 @@
 export default {
   state: {
-    message: 'I\'m Vue store'
+    userName: 'no name'
   },
   mutations: {
-
+    setName (state, name) {
+      state.userName = name
+    },
   },
   actions: {
-
+    SOCKET_User ({ commit }, data) {
+      commit('setName', data.name)
+    }
   },
   getters: {
-    getMessage (state) {
-      return state.message
+    getName (state) {
+      return state.userName
     }
   }
 }

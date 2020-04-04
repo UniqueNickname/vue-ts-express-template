@@ -1,6 +1,9 @@
 <template lang="pug">
   #app
-    vue-extend-layouts(path="layouts")
+    .wrapper
+      .content-wrapper
+        .content
+          vue-extend-layouts(path="layouts")
 </template>
 
 <script lang="ts">
@@ -11,8 +14,7 @@ export default Vue.extend({
   name: 'App',
   components: { VueExtendLayouts },
   sockets: {
-    connect () {
-      console.log('log from index.vue')
+    connect: () => {
     }
   }
 })

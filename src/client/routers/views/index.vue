@@ -1,18 +1,18 @@
 <template lang="pug">
   .home
     h1
-      |home
-    hello
+      |Page: home
+    messager
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import hello from '../../components/hello.vue'
+import messager from '../../components/messager.vue'
 
 export default Vue.extend({
   name: 'Home',
   components: {
-    hello
+    messager
   },
 })
 </script>
