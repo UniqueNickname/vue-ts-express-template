@@ -1,6 +1,6 @@
-const socketIO = require('socket.io')
+const consola = require('consola')
 
-socketAction () {
+function socketAction (io) {
   io.on('connection', (socket) => {
     consola.info({ message: '[Connect]'})
   
@@ -18,3 +18,5 @@ socketAction () {
     })
   })
 }
+
+module.exports = socketAction

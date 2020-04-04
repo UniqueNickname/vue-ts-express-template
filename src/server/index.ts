@@ -7,6 +7,7 @@ const consola = require('consola')
 const bodyParser = require('body-parser')
 const socketIO = require('socket.io')
 const connectHistory = require('connect-history-api-fallback')
+const socketAction = require('./modules/socket.io')
 require('dotenv').config()
 
 function start () {
@@ -41,22 +42,7 @@ function start () {
       })
     })
 
-    io.on('connection', (socket) => {
-      consola.info({ message: '[Connect]'})
-
-      socket.on('newMessage', data => {
-        consola.info({
-          message: data.text,
-          badge: true
-        })
-      })
-
-      socket.emit('User', { name: 'Ivan' })
-
-      socket.on('disconnect', (socket) => {
-        consola.info({ message: '[Disconnect]' })
-      })
-    })
+    socketAction(io)
 
   } catch(err) {
     if (err) {
