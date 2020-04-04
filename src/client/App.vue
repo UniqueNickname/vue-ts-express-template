@@ -1,16 +1,15 @@
 <template lang="pug">
   #app
-    nav
-      router-link(to="/") Home
-      router-link(to="/about") About
-    router-view
+    vue-extend-layouts(path="layouts")
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import VueExtendLayouts from 'vue-extend-layout'
+
 export default Vue.extend({
   name: 'App',
-  // MARKER Этот код выведется в терминал клиента 
+  components: { VueExtendLayouts },
   sockets: {
     connect () {
       console.log('log from index.vue')

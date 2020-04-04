@@ -8,11 +8,6 @@ const AboutPage = resolve => {
     resolve(require('./views/about.vue'))
   })
 }
-const ErrorPage = resolve => {
-  require.ensure(['./views/error.vue'], () => {
-    resolve(require('./views/error.vue'))
-  })
-}
 
 Vue.use(VueRouter)
 
@@ -20,17 +15,25 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: HomePage
+    component: HomePage,
+    meta: {
+      layout: 'test'
+    },
   },
   {
     path: '/about',
     name: 'About',
-    component: AboutPage
+    component: AboutPage,
+    meta: {
+      layout: 'default'
+    },
   },
   {
     path: '*',
     name: 'error',
-    component: ErrorPage
+    meta: {
+      layout: 'error'
+    },
   },
 ]
 

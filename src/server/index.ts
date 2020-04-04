@@ -42,7 +42,6 @@ function start () {
     })
 
     io.on('connection', (socket) => {
-      // MARKER Этот код выведется в терминал сервера
       consola.info({ message: 'Connection is ready' })
       socket.on('disconnect', (socket) => {
         consola.info({ message: 'Connection is finished' })
