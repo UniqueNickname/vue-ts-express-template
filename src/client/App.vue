@@ -1,9 +1,7 @@
 <template lang="pug">
   #app
     .wrapper
-      .content-wrapper
-        .content
-          vue-extend-layouts(path="layouts")
+      vue-extend-layouts(path="layouts")
 </template>
 
 <script lang="ts">

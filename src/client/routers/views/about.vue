@@ -1,5 +1,5 @@
 <template lang="pug">
-  .about
+  .content.about
     h1
       |about
 </template>

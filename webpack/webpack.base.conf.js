@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
+const WebpackBar = require('webpackbar')
 
 //+? Main const
 const PATHS = {
@@ -125,17 +126,16 @@ module.exports = {
     }
   },
   plugins: [
+    new WebpackBar({
+      name: 'client',
+      color: 'green',
+    }),
     new Dotenv(),
     new VueLoaderPlugin(),
     new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin({
-      filename: `${PATHS.assets}css/[name].[hash].css`,
-    }),
     new CopyWebpackPlugin([
       { from: `${PATHS.src}/static`, to: '' },
     ]),
-
-    //! Automatic creation any html pages (Don't forget to RERUN dev server)
     ...PAGES.map(page => new HtmlWebpackPlugin({
       template: `${PAGES_DIR}/${page}`,
       filename: `./${page.replace(/\.pug/,'.html')}`

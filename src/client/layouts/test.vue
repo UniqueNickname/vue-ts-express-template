@@ -1,5 +1,5 @@
 <template lang="pug">
-  .test
+  .content-wrapper.test
     h1 Layout TEST
     nav
       router-link(to="/") Home

@@ -1,12 +1,13 @@
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
-
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const buildWebpackConfig = merge(baseWebpackConfig, {
   //++ BUILD config 
   mode: 'production',
   output: {
     filename: `${baseWebpackConfig.externals.paths.assets}js/[name].js`,
   },
+  stats: 'errors-only',
   module: {
     rules: [
       {
@@ -38,7 +39,6 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
               gifsicle: {
                 interlaced: true,
               },
-              //! the webp option will enable WEBP
               webp: {
                 preset: 'default',
                 method: 4,
@@ -51,7 +51,11 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
       }, 
     ]
   },
-  plugins: []
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: `${baseWebpackConfig.externals.paths.assets}css/[name].css`,
+    }),
+  ]
 })
 
 module.exports = buildWebpackConfig

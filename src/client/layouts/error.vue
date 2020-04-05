@@ -1,5 +1,5 @@
 <template lang="pug">
-  .error
+  .content-wrapper.error
     h1
       |error
 </template>

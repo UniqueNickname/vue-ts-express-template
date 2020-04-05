@@ -1,5 +1,5 @@
 <template lang="pug">
-  .home
+  .content.home
     h1
       |Page: home
     messager

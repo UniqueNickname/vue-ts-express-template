@@ -1,5 +1,5 @@
 <template lang="pug">
-  .default
+  .content-wrapper.default
     h1 Layout DEFAULT
     nav
       router-link(to="/") Home

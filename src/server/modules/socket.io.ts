@@ -2,7 +2,7 @@ const consola = require('consola')
 
 function socketAction (io) {
   io.on('connection', (socket) => {
-    consola.info({ message: '[Connect]'})
+    consola.info({ message: '[Connect]' })
   
     socket.on('newMessage', data => {
       consola.info({

@@ -1,5 +1,3 @@
-// require('dotenv').config()
-
 //! Only for import (scss, images, fonts, libs etc) 
 
 //+ Scss                                            
@@ -15,9 +13,9 @@ import './assets/scss/main.scss'
 
 //+ Vue
 import Vue from 'vue'
-import App from './App.vue'
-import store from './store/index.ts'
-import router from './routers/index.ts'
+import App from './app.vue'
+import store from './store/store.ts'
+import router from './routers/router.ts'
 import VueSocketIO from 'vue-socket.io'
 
 Vue.config.productionTip = false

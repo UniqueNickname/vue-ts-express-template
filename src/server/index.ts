@@ -19,13 +19,17 @@ function start () {
     const PATH_TO_HTML  = path.join(PATH_TO_CLIENT, 'index.html')
 
     fs.stat(PATH_TO_HTML, (err) => {
-      if (err) throw consola.error({message: 'index.html is not defined', badge: true,})
+      if (err) {
+        consola.error({message: 'index.html is not defined', badge: true,})
+        if (process.env.NODE_ENV === 'production') throw 'index.html is not defined'
+      }
+
     })
 
     const app : Application = express()
     const server = http.createServer(app)
     const io = socketIO.listen(server)
-
+    
     app.use(connectHistory())
     app.use(express.static(PATH_TO_CLIENT))
     app.use(bodyParser.json())
@@ -41,7 +45,7 @@ function start () {
         badge: true,
       })
     })
-
+    
     socketAction(io)
 
   } catch(err) {

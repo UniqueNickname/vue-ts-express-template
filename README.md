@@ -1,6 +1,6 @@
 <div align="center">
-  <img width="200" height="200" src="https://webpack.js.org/assets/icon-square-big.svg">
-  <h1>Pug + TypeScript Webpack Template</h1>
+  <img width="200" height="200" src="https://vuejs.org/images/logo.png">
+  <h1>Vue + Express + TypeScript Webpack Template</h1>
   <p>Author: <a href="https://github.com/uniquenickname" target="_blank">Ivan Kochura</a></p>
 </div>
 
@@ -8,7 +8,7 @@
 
 ``` bash
 # Download repository:
-git clone https://github.com/uniquenickname/pug-ts-template pug-ts-template
+git clone https://github.com/uniquenickname/vue-ts-express-template vue-ts-express-template
 
 # Go to the app:
 cd pug-ts-template
@@ -16,24 +16,33 @@ cd pug-ts-template
 # Install dependencies:
 npm install
 
-# Server with hot reload at http://localhost:3000/
+# Dev server
 npm run dev
 
-# Output will be at dist/ folder
-npm run build
+# Production server
+npm run start
 ```
 
 ## Project Structure:
 
-* `src/pug/layout` - put custom layout for pages
-* `src/pug/includes` - all app includes
-* `src/pug/utils` - pug mixins and other
-* `src/pug/pages` - put custom app pages.
-* `src/assets/scss` - put custom app SCSS styles here. Don't forget to import them in `index.ts`
-* `src/assets/img` - put images here. Don't forget to import them in `index.ts`
-* `src/ts` - put custom app scripts here
-* `src/index.ts` - main app file where you include/import all required libs and init app
-* `static/` - folder with extra static assets that will be copied into output folder
+* `src/client/index.ts` - main app file where you include/import all required libs and init client side of app
+* `src/client/pug/layout/main.pug` - layout for main page. Don't change this file
+* `src/client/pug/pages/index.pug` - main page. Don't change this file
+* `src/client/assets/scss` - put custom app SCSS styles here. Don't forget to import them in `index.ts`
+* `src/client/assets/img` - put images here. Don't forget to import them in `index.ts`
+* `src/client/assets/fonts` - put fonts here. Don't forget to import them in `fonts.scss`
+* `src/client/ts` - put custom app scripts here
+* `src/client/static` - folder with extra static assets that will be copied into output folder
+* `src/client/app.vue` - main vue file
+* `src/client/components` - put custom vue components for vue app
+* `src/client/layouts` - put custom layout for vue-extend-layout
+* `src/client/routers/router.ts` - vue-router config
+* `src/client/routers/views` - put custom pages for vue-router. Don't forget to import them in `router.ts`
+* `src/client/store/store.ts` - vuex config
+* `src/client/store/modules` - put custom store modules for vuex. Don't forget to import them in `store.ts`
+* `src/server/index.ts` - main server file where you include/import all required libs and init server side of app
+* `src/server/modules` - put custom modules for server
+* `src/server/database` - put your files for database e.g. mongoose schemas
 
 <div align="center">
   <h2>Settings:</h2>
@@ -45,7 +54,7 @@ Default:
 ``` js
 const PATHS = {
   // Path to main app dir
-  src: path.join(__dirname, '../src'),
+  src: path.join(__dirname, '../src/client'),
   // Path to Output dir
   dist: path.join(__dirname, '../dist'),
   // Path to Second Output dir (ts/scss/fonts etc folder)
@@ -55,8 +64,8 @@ const PATHS = {
 
 ## Import Another libs:
 1. Install libs
-2. Import libs in `./index.js`
-``` js
+2. Import libs in `./index.ts`
+``` ts
 // React example
 import React from 'react'
 // Bootstrap example
@@ -83,33 +92,6 @@ import 'bootstrap/dist/js/bootstrap.min.js'
 // another ts file for example
 import './common.ts'
 ```
-
-## PUG Dir Folder:
-#### Default:
-* .pug dir: `./pug/pages`
-* Configurations: in `./build/webpack.base.conf.js`
-**Usage:**
-All files must be created in the `./pug/pages` folder.
-Example:
-``` bash
-./pug/pages/index.pug
-./pug/pages/about.pug
-```
-
-#### Change PUG Default Dir Folder:
-Example for `./pug/mynewfolder/pages`:
-* Change `./build/webpack.base.conf.js` const PAGES_DIR:
-``` js
-// Your new path
-const PAGES_DIR = `${PATHS.src}/pug/mynewfolder/pages/`
-```
-3. Rerun webpack dev server
-
-## Create Another PUG Files:
-#### Default: 
-Automatic creation any pug pages:
-1. Create another pug file in `./pug/pages/`
-2. Open new page `http://localhost:8081/about.html` (Don't forget to RERUN dev server)
 
 ## Add Fonts:
 Add @include font-face in `/assets/scss/utils/fonts.scss`:
