@@ -1,11 +1,18 @@
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
 const buildWebpackConfig = merge(baseWebpackConfig, {
   //++ BUILD config 
   mode: 'production',
+  entry: {
+    app: [
+      `${baseWebpackConfig.externals.paths.src}/index.ts`,
+      `${baseWebpackConfig.externals.paths.src}/ts/index.ts`,
+    ],
+  },
   output: {
-    filename: `${baseWebpackConfig.externals.paths.assets}js/[name].js`,
+    filename: `${baseWebpackConfig.externals.paths.assets}js/[name].bundle.js`,
   },
   stats: 'errors-only',
   module: {

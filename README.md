@@ -14,13 +14,13 @@ git clone https://github.com/uniquenickname/vue-ts-express-template vue-ts-expre
 cd pug-ts-template
 
 # Install dependencies:
-npm install
+yarn
 
 # Dev server
-npm run dev
+yarn dev
 
 # Production server
-npm run start
+yarn start
 ```
 
 ## Project Structure:
@@ -48,19 +48,6 @@ npm run start
   <h2>Settings:</h2>
 </div>
 
-## Main const:
-Easy way to move all files.
-Default:
-``` js
-const PATHS = {
-  // Path to main app dir
-  src: path.join(__dirname, '../src/client'),
-  // Path to Output dir
-  dist: path.join(__dirname, '../dist'),
-  // Path to Second Output dir (ts/scss/fonts etc folder)
-  assets: 'assets/'
-}
-```
 
 ## Import Another libs:
 1. Install libs
